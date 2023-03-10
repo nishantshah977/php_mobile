@@ -13,8 +13,6 @@ sed -i 's|DocumentRoot /data/data/com.termux/files/home|DocumentRoot /storage/em
 # Change Directory Index to index.php and index.html
 sed -i 's|DirectoryIndex index.html|DirectoryIndex index.php index.html|g' /etc/apache2/httpd.conf
 
-# Listen to port 8080
-echo "Listen 8080" >> $PREFIX/etc/apache2/httpd.conf
 
 # Start Apache2
 apachectl start
