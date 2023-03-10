@@ -5,13 +5,11 @@ pkg update
 pkg install -y apache2 php
 
 # Enable PHP module in Apache2
-echo "LoadModule php7_module libexec/apache2/libphp7.so" >> $PREFIX/etc/apache2/httpd.conf
-
-# Open Apache2 configuration file in Nano editor
-nano $PREFIX/etc/apache2/httpd.conf
+echo "
+LoadModule php7_module libexec/apache2/libphp7.so" >> $PREFIX/etc/apache2/httpd.conf
 
 # Change DocumentRoot to /storage/emulated/0/server
-sed -i 's|DocumentRoot "/data/data/com.termux/files/home"|DocumentRoot "/storage/emulated/0/server"|g' $PREFIX/etc/apache2/httpd.conf
+sed -i 's|DocumentRoot "/data/data/com.termux/files/usr/share/apache2/default-site/htdocs"|DocumentRoot "/storage/emulated/0/server"|g' $PREFIX/etc/apache2/httpd.conf
 
 # Change Directory Index to index.html index.php
 sed -i 's|DirectoryIndex index.html|DirectoryIndex index.html index.php|g' $PREFIX/etc/apache2/httpd.conf
