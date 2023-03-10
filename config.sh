@@ -5,7 +5,7 @@ apt update
 apt install -y apache2 php
 
 # Enable PHP module in Apache2
-sed -i 's/#LoadModule php_module/LoadModule php7_module/g' /etc/apache2/httpd.conf
+sed -i 's/#LoadModule php_module/LoadModule php_module/g' /etc/apache2/httpd.conf
 
 # Change DocumentRoot to /storage/emulated/0/server
 sed -i 's|DocumentRoot /data/data/com.termux/files/home|DocumentRoot /storage/emulated/0/server|g' /etc/apache2/httpd.conf
@@ -14,7 +14,7 @@ sed -i 's|DocumentRoot /data/data/com.termux/files/home|DocumentRoot /storage/em
 sed -i 's|DirectoryIndex index.html|DirectoryIndex index.php index.html|g' /etc/apache2/httpd.conf
 
 # Listen to port 8080
-echo "Listen 8080" >> /etc/apache2/httpd.conf
+echo "Listen 8080" >> $PREFIX/etc/apache2/httpd.conf
 
 # Start Apache2
 apachectl start
