@@ -8,7 +8,7 @@ pkg install php-apache
 termux-setup-storage
 cd /storage/emulated/0/
 mkdir server
-
+chmod 
 
 
 # Enable PHP module in Apache2
