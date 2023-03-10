@@ -1,8 +1,8 @@
 # php_in_android
 This repository install apache2 and php on termux and provide you some concepts on how to use apache2 on termux.
 
-# Under Testing
+# Copy and Paste On Termux
 
 ```
-cd php_in_android && chmod +x config.sh && ./config.sh
+pkg install git && git clone https://github.com/nishantshah977/php_mobile && cd php_mobile && chmod +x config.sh && ./config.sh
 ```
