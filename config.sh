@@ -5,6 +5,11 @@ pkg update
 pkg upgrade
 pkg install apache2
 pkg install php-apache
+termux-setup-storage
+cd /storage/emulated/0/
+mkdir server
+
+
 
 # Enable PHP module in Apache2
 echo "ServerName localhost" >> $PREFIX/etc/apache2/httpd.conf
