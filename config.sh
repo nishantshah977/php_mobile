@@ -1,10 +1,23 @@
-#!/data/data/com.termux/files/usr/bin/bash
+#!/bin/bash
 
-pkg install -y apache2 php
+# Install Apache2 and PHP
+apt update
+apt install -y apache2 php
+
+# Enable PHP module in Apache2
+sed -i 's/#LoadModule php_module/LoadModule php7_module/g' /etc/apache2/httpd.conf
+
+# Change DocumentRoot to /storage/emulated/0/server
+sed -i 's|DocumentRoot /data/data/com.termux/files/home|DocumentRoot /storage/emulated/0/server|g' /etc/apache2/httpd.conf
+
+# Change Directory Index to index.php and index.html
+sed -i 's|DirectoryIndex index.html|DirectoryIndex index.php index.html|g' /etc/apache2/httpd.conf
+
+# Listen to port 8080
+echo "Listen 8080" >> /etc/apache2/httpd.conf
+
+# Start Apache2
 apachectl start
-sed -i 's/#LoadModule php7_module/LoadModule php7_module/g' $PREFIX/etc/apache2/httpd.conf
-apachectl restart
-echo "<?php phpinfo(); ?>" > $PREFIX/share/apache2/default-site/htdocs/info.php
 
 echo "Apache2 and PHP have been installed and configured successfully."
-echo "You can access the PHP information page by opening a web browser on your Android device and navigating to http://localhost/info.php."
+echo "You can access the server at http://localhost:8080/"
