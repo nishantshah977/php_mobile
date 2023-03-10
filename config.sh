@@ -2,7 +2,9 @@
 
 # Install Apache2 and PHP
 pkg update
-pkg install -y apache2 php
+pkg upgrade
+pkg install apache2
+pkg install php-apache
 
 # Enable PHP module in Apache2
 echo "ServerName localhost" >> $PREFIX/etc/apache2/httpd.conf
