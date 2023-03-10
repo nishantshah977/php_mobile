@@ -3,13 +3,16 @@
 # Install Apache2 and PHP
 pkg update
 pkg upgrade
-pkg install apache2
-pkg install php-apache
+
 termux-setup-storage
 cd /storage/emulated/0/
 mkdir server
 chmod 755 server
 cd $HOME
+
+pkg install apache2
+pkg install php-apache
+
 
 
 # Enable PHP module in Apache2
