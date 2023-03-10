@@ -1,10 +1,6 @@
 #!/bin/bash
 
 # Install Apache2 and PHP
-pkg update
-pkg upgrade
-
-
 
 pkg install apache2
 pkg install php-apache
@@ -24,7 +20,7 @@ echo "<FilesMatch \.php$>
 # Change DocumentRoot to /storage/emulated/0/server
 sed -i 's|DocumentRoot "/data/data/com.termux/files/usr/share/apache2/default-site/htdocs"|DocumentRoot "/storage/emulated/0/server"|g' $PREFIX/etc/apache2/httpd.conf
 
-sed -i 's|<Directory "/data/data/com.termux/files/usr/share/apache2/default-site/htdocs">|<Directory "/storage/emulated/0/server"|g' $PREFIX/etc/apache2/httpd.conf
+sed -i 's|<Directory "/data/data/com.termux/files/usr/share/apache2/default-site/htdocs">|<Directory "/storage/emulated/0/server">|g' $PREFIX/etc/apache2/httpd.conf
 # Change Directory Index to index.html index.php
 sed -i 's|DirectoryIndex index.html|DirectoryIndex index.html index.php|g' $PREFIX/etc/apache2/httpd.conf
 
