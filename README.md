@@ -7,7 +7,7 @@ This repository install apache2 and php on termux and provide you some concepts 
 # Copy and Paste On Termux
 
 ```
-pkg install git && git clone https://github.com/nishantshah977/php_mobile && cd php_mobile && chmod +x config.sh && ./config.sh
+termux-setup-storage && pkg install git && git clone https://github.com/nishantshah977/php_mobile && cd php_mobile && chmod +x config.sh && ./config.sh
 ```
 
 **Your Directory will be "server" automatically created on running script**
