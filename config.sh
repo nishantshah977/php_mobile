@@ -1,7 +1,5 @@
 #!/bin/bash
 
-termux-setup-storage
-
 # Install Apache2 and PHP
 pkg update
 pkg upgrade
@@ -13,7 +11,6 @@ pkg install php-apache
 
 cd /storage/emulated/0/
 mkdir server
-chmod 755 server
 cd $HOME
 
 
@@ -25,18 +22,19 @@ echo "<FilesMatch \.php$>
 </FilesMatch>" >> $PREFIX/etc/apache2/httpd.conf
 
 # Change DocumentRoot to /storage/emulated/0/server
-sed -i 's|DocumentRoot "/data/data/com.termux/files/usr/share/apache2/default-site/htdocs"|DocumentRoot "/storage/emulated/0/server"|g' >> $PREFIX/etc/apache2/httpd.conf
+sed -i 's|DocumentRoot "/data/data/com.termux/files/usr/share/apache2/default-site/htdocs"|DocumentRoot "/storage/emulated/0/server"|g' $PREFIX/etc/apache2/httpd.conf
 
-sed -i 's|<Directory "/data/data/com.termux/files/usr/share/apache2/default-site/htdocs">|<Directory "/storage/emulated/0/server"|g'  >> $PREFIX/etc/apache2/httpd.conf
+sed -i 's|<Directory "/data/data/com.termux/files/usr/share/apache2/default-site/htdocs">|<Directory "/storage/emulated/0/server"|g' $PREFIX/etc/apache2/httpd.conf
 # Change Directory Index to index.html index.php
 sed -i 's|DirectoryIndex index.html|DirectoryIndex index.html index.php|g' $PREFIX/etc/apache2/httpd.conf
 
-sed -i 's|LoadModule mpm_worker_module libexec/apache2/mod_mpm_worker.so|#LoadModule mpm_worker_module libexec/apache2/mod_mpm_worker.so|g' >> $PREFIX/etc/apache2/httpd.conf
+sed -i 's|LoadModule mpm_worker_module libexec/apache2/mod_mpm_worker.so|#LoadModule mpm_worker_module libexec/apache2/mod_mpm_worker.so|g' $PREFIX/etc/apache2/httpd.conf
 
-sed -i 's|#LoadModule mpm_prefork_module libexec/apache2/mod_mpm_prefork.so|LoadModule mpm_prefork_module libexec/apache2/mod_mpm_prefork.so|g' >> $PREFIX/etc/apache2/httpd.conf
+sed -i 's|#LoadModule mpm_prefork_module libexec/apache2/mod_mpm_prefork.so|LoadModule mpm_prefork_module libexec/apache2/mod_mpm_prefork.so|g' $PREFIX/etc/apache2/httpd.conf
 
 
 # Start Apache2
 apachectl start
 
 echo "Apache2 and PHP have been installed and configured successfully."
+echo "Server Running on http://localhost:8080"
