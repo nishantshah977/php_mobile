@@ -8,9 +8,9 @@ pkg install php-apache
 
 # Enable PHP module in Apache2
 echo "ServerName localhost" >> $PREFIX/etc/apache2/httpd.conf
-echo "LoadModule php7_module /data/data/com.termux/files/usr/libexec/apache2/libphp.so" >> $PREFIX/etc/apache2/httpd.conf
+echo "LoadModule php_module /data/data/com.termux/files/usr/libexec/apache2/libphp.so" >> $PREFIX/etc/apache2/httpd.conf
 echo "<FilesMatch \.php$>
-  SetHandler application/x-httpd-php7
+  SetHandler application/x-httpd-php
 </FilesMatch>"
 
 # Change DocumentRoot to /storage/emulated/0/server
@@ -18,6 +18,11 @@ sed -i 's|DocumentRoot "/data/data/com.termux/files/usr/share/apache2/default-si
 
 # Change Directory Index to index.html index.php
 sed -i 's|DirectoryIndex index.html|DirectoryIndex index.html index.php|g' $PREFIX/etc/apache2/httpd.conf
+
+sed -i 's|LoadModule mpm_worker_module libexec/apache2/mod_mpm_worker.so|#LoadModule mpm_worker_module libexec/apache2/mod_mpm_worker.so|g' $PREFIX/etc/apache2/httpd.conf
+
+sed -i 's|#LoadModule mpm_prefork_module libexec/apache2/mod_mpm_prefork.so|LoadModule mpm_prefork_module libexec/apache2/mod_mpm_prefork.so|g' $PREFIX/etc/apache2/httpd.conf
+
 
 # Start Apache2
 apachectl start
