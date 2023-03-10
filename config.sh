@@ -6,7 +6,7 @@ pkg install -y apache2 php
 
 # Enable PHP module in Apache2
 echo "
-LoadModule php7_module libexec/apache2/libphp7.so" >> $PREFIX/etc/apache2/httpd.conf
+LoadModule php_module libexec/apache2/libphp.so" >> $PREFIX/etc/apache2/httpd.conf
 
 # Change DocumentRoot to /storage/emulated/0/server
 sed -i 's|DocumentRoot "/data/data/com.termux/files/usr/share/apache2/default-site/htdocs"|DocumentRoot "/storage/emulated/0/server"|g' $PREFIX/etc/apache2/httpd.conf
