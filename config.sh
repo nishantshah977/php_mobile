@@ -8,7 +8,7 @@ pkg install php-apache
 
 # Enable PHP module in Apache2
 echo "ServerName localhost" >> $PREFIX/etc/apache2/httpd.conf
-echo "LoadModule php7_module /data/data/com.termux/files/usr/libexec/apache2/libphp7.so" >> $PREFIX/etc/apache2/httpd.conf
+echo "LoadModule php_module /data/data/com.termux/files/usr/libexec/apache2/libphp.so" >> $PREFIX/etc/apache2/httpd.conf
 echo "<FilesMatch \.php$>
   SetHandler application/x-httpd-php
 </FilesMatch>"
