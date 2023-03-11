@@ -3,8 +3,9 @@ This repository install apache2 and php on termux and provide you some concepts 
 
 * Works on Termux
 * Tested on Android 
+# Create Your PHP web server on Termux 
 
-# Copy and Paste On Termux
+**Copy and Paste On Termux**
 
 ```
 termux-setup-storage && pkg install git && git clone https://github.com/nishantshah977/php_mobile && cd php_mobile && chmod +x config.sh && ./config.sh
