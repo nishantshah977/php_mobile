@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install Apache2 and PHP
-
+pkg update
 pkg install apache2
 pkg install php-apache
 
