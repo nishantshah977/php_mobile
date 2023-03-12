@@ -34,5 +34,7 @@ CREATE DATABASE database_name;
 **Create User to access Database**
 ```
 CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+```
+```
 GRANT ALL PRIVILEGES ON database_name.* TO 'username'@'localhost';
 ```
