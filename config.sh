@@ -4,6 +4,7 @@
 pkg update
 pkg install apache2
 pkg install php-apache
+pkg install mariadb
 
 cd /storage/emulated/0/
 mkdir server
